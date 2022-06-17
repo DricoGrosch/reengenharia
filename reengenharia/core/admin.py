@@ -50,7 +50,6 @@ class MatriculaAdmin(admin.ModelAdmin):
 admin.site.register(Profissional)
 admin.site.register(Atividade)
 admin.site.register(Equipamento)
-admin.site.register(Agendamento)
 admin.site.register(Banco)
 admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Produto)

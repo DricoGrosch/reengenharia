@@ -16,6 +16,7 @@ class Atividade(models.Model):
     hora_inicio = models.TimeField()
     hora_fim = models.TimeField()
     professor = models.ForeignKey('Profissional', on_delete=models.DO_NOTHING)
+    equipamentos = models.ManyToManyField('Equipamento')
 
     def __str__(self):
         return f'{self.nome} | {self.local.nome} | {self.dia_semana} | {self.hora_inicio} | {self.hora_fim}| {self.professor.nome}'
@@ -46,10 +47,6 @@ class MatriculaAtividade(models.Model):
 
 
 class Equipamento(models.Model):
-    nome = models.CharField(max_length=255)
-
-
-class Agendamento(models.Model):
     nome = models.CharField(max_length=255)
 
 

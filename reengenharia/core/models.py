@@ -8,7 +8,8 @@ class Profissional(models.Model):
 class LocalAtividade(models.Model):
     nome = models.CharField(max_length=255)
 
-
+    def __str__(self):
+        return self.nome
 class Atividade(models.Model):
     nome = models.CharField(max_length=255)
     local = models.ForeignKey('LocalAtividade', on_delete=models.DO_NOTHING)
@@ -26,13 +27,15 @@ class Matricula(models.Model):
     aluno = models.ForeignKey('Aluno', on_delete=models.DO_NOTHING)
     data_exame = models.DateField()
     validade_exame = models.DateField()
+
     inicio_contrato = models.DateField()
     vencimento_contrato = models.DateField()
     valor_pre_contrato = models.FloatField()
     pagamento_pre_contrato = models.FloatField()
-    desconto_matricula = models.FloatField()
     valor_matricula = models.FloatField()
+    desconto_matricula = models.FloatField()
     valor_final_matricula = models.FloatField()
+
     data_matricula = models.DateField()
     data_primeira_mensalidade = models.DateField()
     numero_parcelas = models.IntegerField()
@@ -48,7 +51,8 @@ class MatriculaAtividade(models.Model):
 
 class Equipamento(models.Model):
     nome = models.CharField(max_length=255)
-
+    def __str__(self):
+        return self.nome
 
 class Banco(models.Model):
     nome = models.CharField(max_length=255)
@@ -83,21 +87,24 @@ class Aluno(models.Model):
     pratica_outro_esporte = models.CharField(max_length=255, null=True, blank=True)
     por_que_academia = models.CharField(max_length=255, null=True, blank=True, choices=[
         ['APRENDER_A_NADAR', 'APRENDER A NADAR'],
-        ['BRONQUITE', 'APRENDER A NADAR'],
-        ['COLUNA', 'APRENDER A NADAR'],
-        ['OBESIDADE', 'APRENDER A NADAR'],
-        ['TREINAR', 'APRENDER A NADAR'],
-        ['MANTER_A_FORMA', 'APRENDER A NADAR'],
+        ['BRONQUITE', 'BRONQUITE'],
+        ['COLUNA', 'COLUNA'],
+        ['OBESIDADE', 'OBESIDADE'],
+        ['TREINAR', 'TREINAR'],
+        ['MANTER_A_FORMA', 'MANTER A FORMA'],
         ['APRENDER_A_NADAR', 'APRENDER A NADAR'],
     ])
     como_ficou_sabendo = models.CharField(max_length=255, null=True, blank=True)
 
-
+    def __str__(self):
+        return self.nome
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
     valor = models.FloatField()
 
 
+    def __str__(self):
+        return self.nome
 class Venda(models.Model):
     PRAZO = 'PRAZO'
     A_VISTA = 'À VISTA'
@@ -108,7 +115,8 @@ class Venda(models.Model):
     aluno = models.ForeignKey('Aluno', on_delete=models.DO_NOTHING, null=True, blank=True)
     forma_pagamento = models.CharField(choices=pagamento_choices, max_length=255)
 
-
+    def __str__(self):
+        return ''
 class ProdutoVenda(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.DO_NOTHING)
     venda = models.ForeignKey('Venda', on_delete=models.DO_NOTHING)

@@ -1,0 +1,109 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class Profissional{
+    nome : CharField
+}
+
+class LocalAtividade{
+    nome : CharField
+}
+
+class Atividade{
+    nome : CharField
+    dia_semana : CharField
+    hora_inicio :.TimeField
+    hora_fim :.TimeField
+}
+class Matricula{
+    data_exame :DateField
+    validade_exame :DateField
+    inicio_contrato :DateField
+    vencimento_contrato :DateField
+    valor_pre_contrato :FloatField
+    pagamento_pre_contrato :FloatField
+    desconto_matricula :FloatField
+    valor_matricula :FloatField
+    valor_final_matricula :FloatField
+    data_matricula :DateField
+    data_primeira_mensalidade :DateField
+    numero_parcelas :IntegerField
+    valor_mensalidade :FloatField
+    desconto_mensalidade :FloatField
+    valor_final_mensalidade :FloatField
+}
+
+
+class Equipamento{
+    nome : CharField
+
+}
+class Banco{
+    nome : CharField
+}
+
+class Usuario{
+    nome : CharField
+}
+
+class Aluno{
+    nome : CharField
+    nascimento :DateField
+    sexo :CharField
+    ativo :BooleanField
+    fone : CharField
+    celular : CharField
+    email : CharField
+    cidade : CharField
+    uf :CharField
+    cep : CharField
+    rua : CharField
+    numero : CharField
+    bairro : CharField
+    plano_saude :CharField
+    pratica_outro_esporte :CharField
+    por_que_academia :CharField
+    como_ficou_sabendo :CharField
+
+}
+class Produto{
+    nome : CharField
+    valor :FloatField
+}
+
+class Venda{
+    forma_pagamento :CharField
+}
+
+class ProdutoVenda{
+    quantidade :FloatField
+}
+
+
+
+
+Matricula "1" *-- "n" Atividade
+Atividade "1" *-- "n" Equipamento
+Aluno <--Matricula
+Profissional <--Atividade
+LocalAtividade <--Atividade
+Venda <--ProdutoVenda
+Produto <--ProdutoVenda
+Aluno <--Venda
+
+
+
+
+
+
+
+'User <-- FavoriteEvent
+'Event <-- Attachment
+'Event <-- User
+'FirebaseMessagingDevice <-- User
+'AuthToken <-- User
+'AccountCreationToken <-- User
+'Event o-- User
+
+@enduml
